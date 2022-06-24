@@ -18,28 +18,20 @@ public class MainController {
 
     @RequestMapping(path = "/criarviagem" , method = RequestMethod.POST)
     public String criarViagem(@RequestBody ViagemRequest viagem){
-        Viagem v = new Viagem();
-        v.setDataPartida(viagem.getDataPartida());
-        v.setDataRetorno(viagem.getDataRetorno());
-        v.setLocal(viagem.getLocal());
-        v.setVagas(viagem.getVagas());
-        v.setValor(viagem.getValor());
-        viagemRepository.save(v);
-        return viagem.toString();
-
+        Boolean resultadoDaCriacao = viagemService.criarViagem(viagem);
+        if(!resultadoDaCriacao){
+            return "Deu muito ruim";
+        }
+        return "Viagem Cadastrada";
     }
 
-    @RequestMapping(path = "/consuta/viagem/{id}")
+    @RequestMapping(path = "/consulta/viagem/{id}")
     public void alterarViagem (){
 
     }
-    @RequestMapping(path = "/consuta/viagens", method = RequestMethod.GET)
+    @RequestMapping(path = "/consulta/viagens", method = RequestMethod.GET)
     public String consultarViagens(){
          return viagemRepository.findAll().toString();
-
-
-
-
     }
 
     public void deletarViagem (){

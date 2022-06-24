@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 
 
 public interface ViagemService {
-    void save(Viagem v);
+    Boolean criarViagem(ViagemRequest viagemRequest);
 }
