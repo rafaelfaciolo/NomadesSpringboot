@@ -25,13 +25,15 @@ public class MainController {
         return "Viagem Cadastrada";
     }
 
-    @RequestMapping(path = "/consulta/viagem/{id}")
-    public void alterarViagem (){
+    @RequestMapping(path = "/consulta/viagem")
+    public String getViagemById(@RequestParam Long id){
+        Viagem viagem = viagemService.getViagemById(id);
+        return viagem.toString();
 
     }
     @RequestMapping(path = "/consulta/viagens", method = RequestMethod.GET)
     public String consultarViagens(){
-         return viagemRepository.findAll().toString();
+         return viagemService.getViagens();
     }
 
     public void deletarViagem (){

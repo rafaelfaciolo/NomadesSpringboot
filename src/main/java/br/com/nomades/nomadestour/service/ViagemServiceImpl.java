@@ -32,4 +32,14 @@ public class ViagemServiceImpl implements ViagemService{
         }
         return true;
     }
+
+    @Override
+    public String getViagens() {
+        return viagemRepository.findAll().toString();
+    }
+
+    @Override
+    public Viagem getViagemById(Long id) {
+        return viagemRepository.getReferenceById(id);
+    }
 }

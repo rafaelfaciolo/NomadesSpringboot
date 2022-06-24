@@ -9,4 +9,8 @@ import org.springframework.stereotype.Service;
 
 public interface ViagemService {
     Boolean criarViagem(ViagemRequest viagemRequest);
+
+    String getViagens();
+
+    Viagem getViagemById(Long id);
 }
